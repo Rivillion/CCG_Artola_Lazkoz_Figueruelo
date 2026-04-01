@@ -4,7 +4,7 @@ This repository contains a modified version of [CLASS](https://github.com/lesgou
 
 ## Repository Structure & Modified Files
 
-This repository hosts **only** the specific source code files that have been modified from the base CLASS distribution. These files must retain their exact paths relative to the `classy` root directory:
+This repository hosts the modified CLASS distribution within the `classy` folder. The specific modified files are the following and can be tracked my searching `Modified by ...`:
 
 - **`include/background.h`**
     - Updates the `fluid_equation_of_state` enumeration to include the `SQRT` and `TANH` parametrizations.
@@ -15,38 +15,24 @@ This repository hosts **only** the specific source code files that have been mod
 - **`source/background.c`**
     - Implements the actual mathematical formulations for the equations of state (`SQRT` and `TANH`) inside the `background_w_fld` routine.
     - Implements the corresponding analytical derivatives (`dw_over_da_fld`) necessary for consistent background and perturbation calculations.
- 
-The specific modifications can be identified by searching `Modified by ...`.
 
 ## Update and recompile Cobaya
 
-To use these modifications within your Cobaya workflows, you must swap these modified files into your local CLASS installation and recompile the `classy` Python wrapper.
+To use these modifications within your Cobaya workflows, you must substitute and swap the `classy` Python wrapper.
 
 **Step-by-step installation guide:**
 
-1.  **Locate your local CLASS installation**: Navigate to the directory where your CLASS source code used by Cobaya is located (typically somewhere like `cobaya_packages/code/classy/`).
+1.  Navigate to the directory where your CLASS source code used by Cobaya is located (`cobaya_packages/code/classy/` following the steps provided by the CCG).
 
-    ```bash
-    cd /path/to/your/cobaya_packages/code/classy
-    ```
+2.  Replace the existing `classy` directory by that on this repository.
 
-2.  **Back up existing files (Optional but Recommended)**:
-
-    ```bash
-    cp include/background.h include/background.h.backup
-    cp source/input.c source/input.c.backup
-    cp source/background.c source/background.c.backup
-    ```
-
-3.  **Copy the modified files**: Drop the modified files from this repository directly into your local CLASS structure, replacing the old ones.
-
-4.  **Clean the previous build**: Clear out previous build artifacts to ensure a fresh compilation.
+4.  Clear out previous build artifacts to ensure a fresh compilation.
 
     ```bash
     make clean
     ```
 
-5.  **Recompile CLASS and the `classy` wrapper**:
+5.  Recompile CLASS and the `classy` wrapper:
     ```bash
     # You can alternatively use `pip install -e .` if required by your setup
     make
