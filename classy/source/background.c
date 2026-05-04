@@ -2274,7 +2274,7 @@ int background_initial_conditions(
     }
   }
 
-  if (pba->has_fld == _TRUE_) { /
+  if (pba->has_fld == _TRUE_) {
 
     /* rho_fld today */
     rho_fld_today = pba->Omega0_fld * pow(pba->H0,2);
